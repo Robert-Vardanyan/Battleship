@@ -27,4 +27,26 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clon
+   git clon https://github.com/Robert-Vardanyan/Battleship.git
+
+2. Перейдите в каталог проекта:
+   ```bash
+   cd Battleship
+
+3. Создайте виртуальное окружение и активируйте его:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Для Linux/Mac
+   venv\Scripts\activate  # Для Windows
+
+4. Установите зависимости:
+   ```bash
+   pip install -r requirements.txt
+
+## Запуск
+
+Чтобы запустить игру, вы можете использовать один из следующих способов:
+```bash
+python main.py
+
+   
