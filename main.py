@@ -1,11 +1,11 @@
 import os
 import random
-from colorama import init,Fore, Style #Back
-init(autoreset=True)
+from colorama import init, Fore, Style  # Импортируем необходимые модули
+init(autoreset=True)  # Инициализируем Colorama для автоматического сброса стилей
 
 
-#Phrases
-os.system('cls')
+# Фразы приветствия и реакции на разные события
+os.system('cls')  # Очищаем экран
 f_0 = ["Приветствую на поле боя!","Добро пожаловать в игру!","Приветствую, соперник!","Готовься к сражению!","Приготовься к битве!"]
 f_1 = ["Кто ты воин?","Готов ли ты к битве?","Ты готов принять вызов?","Время показать свои навыки!","Пусть бой начнется!","Подними свое оружие и покажи свою силу!"]
 f_2 = ["Время приключений! Игра начинается, герой!","Погнали, дружище! Время вступить в бой!","Собирай оружие, дерзай! Начинаем игру!","Пришло время испытать свою судьбу, давай начнем!","Отважный воин, готов ли ты к вызову? Игра начинается!"]
@@ -13,30 +13,33 @@ f_lose = ["Как жаль, что ты выиграл. Но буду готов
 f_win = ["Хорошая попытка, но в этот раз моя удача была сильнее.","Спасибо за игру! Ты дал мне достойный бой.","Не расстраивайся, это была просто игра. В следующий раз повезет тебе (но это не точно).","Поражение - это часть игры. Не везет всегда, но продолжай стараться.","Отличная попытка! Уверен, в следующий раз тебе повезет больше (но это не точно)."]
 f_wrong_input = ["Неверный формат ответа.","Формат неправильный.","Ошибка ввода.","Пожалуйста, введите корректный формат.","Неправильный ввод."]
 
-# Getting the opponent's name
-print(Fore.BLUE + random.choice(f_0))
-opponent_name = input('\nНапиши свое имя ... ')
+
+# Получаем имя соперника
+print(Fore.BLUE + random.choice(f_0))   # Выводим случайную приветственную фразу
+opponent_name = input('\nНапиши свое имя ... ')  # Просим ввести имя соперника
 print()
-print(Fore.BLUE + random.choice(f_1) + '\n... хотя уже ничего не играет роли 😈(buhaha)')
+print(Fore.BLUE + random.choice(f_1) + '\n... хотя уже ничего не играет роли 😈(buhaha)') # Выводим случайную фразу после ввода имени
 
-# Game info
-steps = 0
-battle_count = 1
-my_score = 0
-opponent_score = 0
-last_winner = 0
-ships = []
 
-placement_strategy = 1  # amen partutyan depqum poxuma taktikan(1-3) 3 - random generacia bayc man a galis amenazat tarberakneric meky
-position = [0,1] # 0- horizonakan 1 - uxxahayac
-side = ['right','left']
-front = ['right','left']
-right_front = ['422', '224']
-left_front = ['332', '233', '323']
+# Информация об игре
+steps = 0  # Шаги
+battle_count = 1  # Количество битв
+my_score = 0  # Мой счет
+opponent_score = 0  # Счет соперника
+last_winner = 0  # Последний победитель (0 - никто, 1 - я, 2 - соперник)
+ships = []  # Список кораблей
+placement_strategy = 1  # Стратегия размещения кораблей
+position = [0, 1]  # 0 - горизонтальное, 1 - вертикальное размещение
+side = ['right', 'left']  # Стороны
+front = ['right', 'left']  # Направления
+right_front = ['422', '224']  # Форматы размещения справа
+left_front = ['332', '233', '323']  # Форматы размещения слева
+
 
 clean_board_coords = {(1,1):0,(1,2):0,(1,3):0,(1,4):0,(1,5):0,(1,6):0,(1,7):0,(1,8):0,(1,9):0,(1,10):0,(2,1):0,(2,2):0,(2,3):0,(2,4):0,(2,5):0,(2,6):0,(2,7):0,(2,8):0,(2,9):0,(2,10):0,(3,1):0,(3,2):0,(3,3):0,(3,4):0,(3,5):0,(3,6):0,(3,7):0,(3,8):0,(3,9):0,(3,10):0,(4,1):0,(4,2):0,(4,3):0,(4,4):0,(4,5):0,(4,6):0,(4,7):0,(4,8):0,(4,9):0,(4,10):0,(5,1):0,(5,2):0,(5,3):0,(5,4):0,(5,5):0,(5,6):0,(5,7):0,(5,8):0,(5,9):0,(5,10):0,(6,1):0,(6,2):0,(6,3):0,(6,4):0,(6,5):0,(6,6):0,(6,7):0,(6,8):0,(6,9):0,(6,10):0,(7,1):0,(7,2):0,(7,3):0,(7,4):0,(7,5):0,(7,6):0,(7,7):0,(7,8):0,(7,9):0,(7,10):0,(8,1):0,(8,2):0,(8,3):0,(8,4):0,(8,5):0,(8,6):0,(8,7):0,(8,8):0,(8,9):0,(8,10):0,(9,1):0,(9,2):0,(9,3):0,(9,4):0,(9,5):0,(9,6):0,(9,7):0,(9,8):0,(9,9):0,(9,10):0,(10,1):0,(10,2):0,(10,3):0,(10,4):0,(10,5):0,(10,6):0,(10,7):0,(10,8):0,(10,9):0,(10,10):0}
 
-#Funcianer
+
+# Функции для управления состоянием игры и размещения кораблей
 def battle_status():
     os.system('cls')
     print('🧱'*30)
@@ -48,6 +51,7 @@ def battle_status():
     elif last_winner == 2:
         print(f'\t{Fore.YELLOW + Style.BRIGHT}Счет  : \tЯ: {my_score}\t\t{opponent_name}: {opponent_score} 👑')
     print('🧱'*30)
+
 
 def find_possible_4ship_positions():
     wave_1 = [(4,1),(8,1),(10,3),(10,7),(1,4),(1,8),(3,10),(7,10)]
@@ -61,7 +65,8 @@ def find_possible_4ship_positions():
             if opponent_board[j] == 0:
                 possible_positions.append(j)
     return possible_positions
-            
+
+
 def find_possible_3_2ship_positions():  
     possible_positions_list = [(1,2),(1,4),(1,6),(1,8),(1,10),(2,1),(2,3),(2,5),(2,7),(2,9),(3,2),(3,4),(3,6),(3,8),(3,10),(4,1),(4,3),(4,5),(4,7),(4,9),(5,2),(5,4),(5,6),(5,8),(5,10),(6,1),(6,3),(6,5),(6,7),(6,9),(7,2),(7,4),(7,6),(7,8),(7,10),(8,1),(8,3),(8,5),(8,7),(8,9),(9,2),(9,4),(9,6),(9,8),(9,10),(10,1),(10,3),(10,5),(10,7),(10,9)]
     possible_positions = []
@@ -69,6 +74,7 @@ def find_possible_3_2ship_positions():
         if opponent_board[i] == 0:
             possible_positions.append(i)
     return possible_positions
+
 
 def mark_ship_contour(coordinate,player_board):
     v_left = (coordinate[0]-1,coordinate[-1]-1)
@@ -84,6 +90,7 @@ def mark_ship_contour(coordinate,player_board):
         if i in player_board:
             if player_board[i] == 0:
                 player_board[i] = 'x'
+
 
 def check_circle(coordinate):
     v_left = (coordinate[0]-1,coordinate[-1]-1)
@@ -102,11 +109,13 @@ def check_circle(coordinate):
     else:
         return 1
     
+
 def arrange_placement(position_, y, x):
     if position_ == 0:
         return (y,x+1)
     else:
         return (y+1,x)
+
 
 def ship_4point(position,y,x):
     my_board[(y,x)] = 1
@@ -119,12 +128,14 @@ def ship_4point(position,y,x):
         mark_ship_contour(i,my_board)
     return cord
 
+
 def check_ship_4point(position,y,x):
     cord = [(y,x)]
     for i in range(3):
         coordinate = arrange_placement(position, cord[-1][0], cord[-1][-1])
         cord.append(coordinate)
     return cord
+
 
 def ship_3point(position,y,x):
     my_board[(y,x)] = 1
@@ -136,6 +147,7 @@ def ship_3point(position,y,x):
     for i in cord:
         mark_ship_contour(i,my_board)
     return cord
+
 
 def check_ship_3point(position,y,x):
     cord = [(y,x)]
@@ -154,6 +166,7 @@ def check_ship_3point(position,y,x):
     else:
         return 0
     
+
 def ship_2point(position,y,x):
     my_board[(y,x)] = 1
     cord = [(y,x)]
@@ -163,6 +176,7 @@ def ship_2point(position,y,x):
     for i in cord:
         mark_ship_contour(i,my_board)
     return cord
+
 
 def check_ship_2point(position,y,x):
     cord = [(y,x)]
@@ -180,16 +194,19 @@ def check_ship_2point(position,y,x):
     else:
         return 0  
 
+
 def ship_1point(y,x,player_board):
     my_board[(y,x)] = 1
     mark_ship_contour((y,x),player_board)
     return [(y,x)]
+
 
 def check_ship_1point(y,x):
     cord = (y,x)
     check = check_circle(cord)
     return check
  
+
 def func_row_right(position, c_1 , right_method):
     row_right = []
     for i in right_method:
@@ -217,6 +234,7 @@ def func_row_right(position, c_1 , right_method):
                 two = ship_2point(position, row_right[-1][-1][0]+2, row_right[-1][-1][-1])
                 row_right.append(two)
             ships.append(two)
+
 
 def func_row_left(position, c_2, left_method):
     row_left = []
@@ -246,6 +264,7 @@ def func_row_left(position, c_2, left_method):
                 row_left.append(two)
             ships.append(two)             
 
+
 def func_front_1_2(position, front_1, c_1,c_2):
     if front_1 == 'right':  
         right_method = random.choice(right_front)
@@ -259,6 +278,7 @@ def func_front_1_2(position, front_1, c_1,c_2):
         func_row_right(position, c_1 , right_method)
         func_row_left(position, c_2, left_method)
   
+
 def func_ship_1point():
     cord_1 = []
     while True:
@@ -273,6 +293,7 @@ def func_ship_1point():
                 mark_ship_contour(x,my_board)
                 cord_1.append(x)
                 ships.append([x])
+
 
 def place_ships(placement_strategy):
     if placement_strategy == 1:
@@ -353,7 +374,7 @@ def place_ships(placement_strategy):
         ships.sort(key=len)
 
 
-#Map
+# Отрисовка карты
 def mapp():
     battle_status()
     for i in range(12):
@@ -401,7 +422,7 @@ def mapp():
                             print('🛟', end = '')                        
             print()
 
-#Attack
+# Атака
 def k_ship_contour(cords):
     #up
     if cords[0] == 1 and cords[-1] == 1:
@@ -435,6 +456,7 @@ def k_ship_contour(cords):
             possible_positionsy.append(i)
     return possible_positionsy
 
+
 def destroy(n_actual,cord_actual):
     if n_actual == 1:
         cord = cord_actual[-1]
@@ -465,7 +487,7 @@ def destroy(n_actual,cord_actual):
     return next_cord
 
 
-#Main code
+# Основной код
 for game in range(10):
     if my_score == 3:
         os.system('cls')
@@ -500,7 +522,7 @@ for game in range(10):
             whose_step == last_winner
         
         ex_step = [] 
-        n_actual = 0 # popodanianeri qanaky
+        n_actual = 0 # Количество попаданий
         cord_actual = []
 
         while True:
