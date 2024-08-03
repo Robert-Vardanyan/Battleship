@@ -75,17 +75,18 @@
 
 ### Примеры:
 
-- Фото 1.
+Фото 1.
 ![Screenshot 2024-08-03 114317](https://github.com/user-attachments/assets/9994c066-e6ff-4f94-ab76-eeaa2207a646)
-- Фото 2.
+Фото 2.
 ![Screenshot 2024-08-03 114357](https://github.com/user-attachments/assets/50745261-2c88-4f84-80b8-dae91b8305d2)
-- Фото 3.
+Фото 3.
 ![Screenshot 2024-08-03 114439](https://github.com/user-attachments/assets/159a0f08-cb8a-421c-889d-14cdcdfea069)
-- Фото 4.
+Фото 4.
 ![Screenshot 2024-08-03 114617](https://github.com/user-attachments/assets/f0869a20-526d-437d-b8ae-eecdecc41ae2)
 
 
-### Надеюсь, вам понравится игра! Если у вас есть предложения или вопросы, пожалуйста, создайте issue в этом репозитории.
+### Надеюсь, вам понравится игра! 
+Если у вас есть предложения или вопросы, пожалуйста, создайте issue в этом репозитории.
 
 
    
