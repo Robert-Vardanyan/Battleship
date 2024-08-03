@@ -75,28 +75,24 @@
 
 ### Примеры:
 
-### Фото 1
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9994c066-e6ff-4f94-ab76-eeaa2207a646" alt="Screenshot 2024-08-03 114317" width="600"/>
   <br>
   <em>Фото 1</em>
 </p>
 
-### Фото 2
 <p align="center">
   <img src="https://github.com/user-attachments/assets/50745261-2c88-4f84-80b8-dae91b8305d2" alt="Screenshot 2024-08-03 114357" width="600"/>
   <br>
   <em>Фото 2</em>
 </p>
 
-### Фото 3
 <p align="center">
   <img src="https://github.com/user-attachments/assets/159a0f08-cb8a-421c-889d-14cdcdfea069" alt="Screenshot 2024-08-03 114439" width="600"/>
   <br>
   <em>Фото 3</em>
 </p>
 
-### Фото 4
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f0869a20-526d-437d-b8ae-eecdecc41ae2" alt="Screenshot 2024-08-03 114617" width="600"/>
   <br>
